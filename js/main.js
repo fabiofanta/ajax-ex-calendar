@@ -33,7 +33,6 @@ $(document).ready(function() {
 			},
 			success: function (data) {
 				var holidays = data.response;
-				console.log(holidays);
 				for (var i = 0; i < holidays.length; i++) {
 					var holiday = holidays[i];
 					var holidayName = holiday.name;
@@ -52,11 +51,10 @@ $(document).ready(function() {
 		var monthName = monthToStamp.format('MMMM');
 		$('#month-name').text(monthName);
 		for (var i = 1; i <= monthDate; i++) {
-			var dayToPush = {day:i + ' ' + monthName,dayDate:standardDay.format('YYYY-MM-DD')};
+			var dayToPush = {day:i + ' ' + monthName,dayDate:standardDay.format('2018-MM-DD')};
 			var finalTemplate = dayTemplate(dayToPush);
 			$('#calendar').append(finalTemplate);
 			standardDay.add(1,'day');
 		}
-		console.log(monthToStamp);
 	}
 })
