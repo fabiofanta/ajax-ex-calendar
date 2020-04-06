@@ -61,7 +61,7 @@ $(document).ready(function() {
 					var holiday = holidays[i];
 					var holidayName = holiday.name;
 					var holidayDate = holiday.date;
-					$('#calendar li[data-day="' + holidayDate + '"]').addClass('holiday').append('-' + holidayName);
+					$('#calendar li[data-day="' + holidayDate + '"]').addClass('holiday').append(' ' + holidayName);
 				};
 			}
 		})

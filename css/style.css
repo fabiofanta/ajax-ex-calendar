@@ -4,6 +4,11 @@
     box-sizing: border-box;
   }
 
+  body {
+      font-size: 16px;
+      font-family: sans-serif;
+  }
+
 .clearfix::after {
 	content: "";
 	display: table;
@@ -17,11 +22,18 @@
 	flex-direction: column;
 }
 
+.top-calendar h1 {
+    margin-bottom: 25px;
+    margin-top: 25px;
+    color: #1a73e8;
+}
+
 .btn-navigation {
 	padding: 5px 20px;
 	border-radius: 5px;
-	background-color: lightblue;
+	background-color: #1a73e8;
 	color: white;
+    font-size: 16px;
 	border: none;
 	cursor: pointer;
 }
@@ -33,32 +45,47 @@
 
 .main-calendar {
 	max-width: 100vw;
-	height: 100vh;
+	height: calc(100vh - 180px);
 }
 
 #calendar {
 	width: calc(100% - 50px);
-	height: calc(100% - 50px);
-	margin: 50px auto;
+	height: 100%;
+	margin:auto;
 }
 
 #weekday {
 	width: calc(100% - 50px);
-	margin: 50px auto;
+	margin: 25px auto;
+    text-align: center;
 }
 
 #calendar li,#weekday li{
 	float: left;
 	width: calc(100% / 7);
-	height: calc(100% / 7);
-	border: 1px solid black;
+	height: calc(100% / 5);
+	border: 1px solid #1a73e8;
+    margin:-1px 0 0 -1px;
+    padding: 5px;
 	list-style: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 #calendar li,#weekday li,#month-name {
 	text-transform: capitalize;
 }
 
-.holiday {
+.holiday,#calendar li:nth-child(7n) {
 	color: red;
+}
+
+#calendar li.holiday {
+    white-space: normal;
+}
+
+#weekday li {
+    background: #1a73e8;
+    color: white;
 }
