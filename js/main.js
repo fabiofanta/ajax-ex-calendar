@@ -58,12 +58,9 @@ $(document).ready(function() {
 		$('#calendar').empty();
 		var standardDay = monthToStamp.clone();
 		var monthDate = monthToStamp.daysInMonth();
-		console.log(monthDate);
 		var monthName = monthToStamp.format('MMMM');
-		console.log(monthName);
 		$('#month-name').text(monthName);
 		var firstOfMonth = standardDay.startOf('month').weekday();
-		console.log(firstOfMonth);
 		if (firstOfMonth != 0) {
 			for (var i = 0; i < firstOfMonth; i++) {
 				var fakeDayToPush = {day:"",dayDate:""};

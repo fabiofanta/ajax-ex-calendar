@@ -18,12 +18,19 @@
 			</div>
 		</div>
 		<div class="main-calendar">
+			<ul id="weekday">
+
+			</ul>
 			<ul id="calendar" class="clearfix">
 
 			</ul>
 		</div>
 
 		<script id="calendar-template" type="text/x-handlebars-template">
+			<li data-day='{{dayDate}}'>{{day}}</li>
+		</script>
+
+		<script id="weekday-template" type="text/x-handlebars-template">
 			<li data-day='{{dayDate}}'>{{day}}</li>
 		</script>
 
