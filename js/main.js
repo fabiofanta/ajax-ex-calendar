@@ -3,9 +3,6 @@ $(document).ready(function() {
 	//handlebars
 	var htmlDay = $('#calendar-template').html();
 	var dayTemplate = Handlebars.compile(htmlDay);
-
-	var htmlWeek = $('#weekday-template').html();
-	var weekTemplate = Handlebars.compile(htmlWeek);
 	//end handlebars
 
 	var startDate = moment('2018-01-01');
@@ -13,7 +10,6 @@ $(document).ready(function() {
 	var maxDate = moment('2018-12-01');
 	stampMonthDays(startDate);
 	printHolidays(startDate);
-	console.log(startDate);
 
 	$('.next-month').click(function () {
 		if (startDate.isSameOrAfter(maxDate)) {
@@ -87,14 +83,4 @@ $(document).ready(function() {
 			standardDay.add(1,'day');
 		}
 	}
-
-	// function stampWeekDay() {
-	// 	for (var i = 0; i < 7; i++) {
-	// 		var test = moment().weekday(i);
-	// 		console.log(test);
-	// 		var context = {textDate:test}
-	// 		var wTemplate = weekTemplate(context)
-	// 		$('#weekday').append(wTemplate);
-	// 	}
-	// }
 })

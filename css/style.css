@@ -42,7 +42,12 @@
 	margin: 50px auto;
 }
 
-#calendar li {
+#weekday {
+	width: calc(100% - 50px);
+	margin: 50px auto;
+}
+
+#calendar li,#weekday li{
 	float: left;
 	width: calc(100% / 7);
 	height: calc(100% / 7);
