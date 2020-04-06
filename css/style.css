@@ -1,4 +1,10 @@
-.top-calendar,.main-calendar {
+.clearfix::after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.top-calendar {
 	display: flex;
 	justify-content: center;
 	align-items:center;
@@ -17,6 +23,23 @@
 .btn-navigation:disabled {
 	background-color: #efefef;
 	cursor: not-allowed;
+}
+
+.main-calendar {
+	height: 100vh;
+	width: 100vw;
+}
+
+#calendar li {
+	float: left;
+	width: calc(100vw / 8);
+	height: 100px;
+	border: 1px solid black;
+	list-style: none;
+}
+
+ul {
+	text-decoration: none;
 }
 
 #calendar li,#month-name {
