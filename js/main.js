@@ -6,21 +6,31 @@ $(document).ready(function() {
 	//end handlebars
 
 	var startDate = moment('2018-01-01');
+	var minDate = moment('2018-01-01');
+	var maxDate = moment('2018-12-31');
 	stampMonthDays(startDate);
-	printHolidays(0);
+	printHolidays(startDate);
 
 	$('.next-month').click(function () {
+		$('.previous-month').prop('disabled',false);
 		startDate.add(1,'month');
 		stampMonthDays(startDate);
-		var mthName = startDate.format('M') - 1;
-		printHolidays(mthName);
+		printHolidays(startDate);
+		console.log(startDate);
 	});
 
 	$('.previous-month').click(function () {
-		startDate.subtract(1,'month');
-		stampMonthDays(startDate);
-		var mthName = startDate.format('M') - 1;
-		printHolidays(mthName);
+		if (startDate.isSameOrBefore(minDate)) {
+			alert('Stop');
+		} else {
+			startDate.subtract(1,'month');
+			stampMonthDays(startDate);
+			printHolidays(startDate);
+			if (startDate.isSameOrBefore(minDate)) {
+				$('.previous-month').prop('disabled',true);
+			}
+		}
+		console.log(startDate);
 	});
 
 	function printHolidays(mth) {
@@ -29,7 +39,7 @@ $(document).ready(function() {
 			method:'GET',
 			data: {
 				year:2018,
-				month:mth,
+				month:mth.month(),
 			},
 			success: function (data) {
 				var holidays = data.response;
@@ -51,7 +61,7 @@ $(document).ready(function() {
 		var monthName = monthToStamp.format('MMMM');
 		$('#month-name').text(monthName);
 		for (var i = 1; i <= monthDate; i++) {
-			var dayToPush = {day:i + ' ' + monthName,dayDate:standardDay.format('2018-MM-DD')};
+			var dayToPush = {day:i + ' ' + monthName,dayDate:standardDay.format('YYYY-MM-DD')};
 			var finalTemplate = dayTemplate(dayToPush);
 			$('#calendar').append(finalTemplate);
 			standardDay.add(1,'day');
