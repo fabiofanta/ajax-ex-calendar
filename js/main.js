@@ -3,19 +3,30 @@ $(document).ready(function() {
 	//handlebars
 	var htmlDay = $('#calendar-template').html();
 	var dayTemplate = Handlebars.compile(htmlDay);
+
+	var htmlWeek = $('#weekday-template').html();
+	var weekTemplate = Handlebars.compile(htmlWeek);
 	//end handlebars
 
 	var startDate = moment('2018-01-01');
 	var minDate = moment('2018-01-01');
-	var maxDate = moment('2018-12-31');
+	var maxDate = moment('2018-12-01');
 	stampMonthDays(startDate);
 	printHolidays(startDate);
+	console.log(startDate);
 
 	$('.next-month').click(function () {
-		$('.previous-month').prop('disabled',false);
-		startDate.add(1,'month');
-		stampMonthDays(startDate);
-		printHolidays(startDate);
+		if (startDate.isSameOrAfter(maxDate)) {
+			alert('Stop');
+		} else {
+			$('.previous-month').prop('disabled',false);
+			startDate.add(1,'month');
+			stampMonthDays(startDate);
+			printHolidays(startDate);
+			if (startDate.isSameOrAfter(maxDate)) {
+				$('.next-month').prop('disabled',true);
+			}
+		}
 		console.log(startDate);
 	});
 
@@ -23,6 +34,7 @@ $(document).ready(function() {
 		if (startDate.isSameOrBefore(minDate)) {
 			alert('Stop');
 		} else {
+			$('.next-month').prop('disabled',false);
 			startDate.subtract(1,'month');
 			stampMonthDays(startDate);
 			printHolidays(startDate);
@@ -77,4 +89,14 @@ $(document).ready(function() {
 			standardDay.add(1,'day');
 		}
 	}
+
+	// function stampWeekDay() {
+	// 	for (var i = 0; i < 7; i++) {
+	// 		var test = moment().weekday(i);
+	// 		console.log(test);
+	// 		var context = {textDate:test}
+	// 		var wTemplate = weekTemplate(context)
+	// 		$('#weekday').append(wTemplate);
+	// 	}
+	// }
 })
