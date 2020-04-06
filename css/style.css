@@ -55,11 +55,7 @@
 	list-style: none;
 }
 
-ul {
-	text-decoration: none;
-}
-
-#calendar li,#month-name {
+#calendar li,#weekday li,#month-name {
 	text-transform: capitalize;
 }
 

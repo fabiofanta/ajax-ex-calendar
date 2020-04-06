@@ -3,11 +3,15 @@ $(document).ready(function() {
 	//handlebars
 	var htmlDay = $('#calendar-template').html();
 	var dayTemplate = Handlebars.compile(htmlDay);
+
+	var htmlWeekDay = $('#weekday-template').html();
+	var weekDayTemplate = Handlebars.compile(htmlWeekDay);
 	//end handlebars
 
 	var startDate = moment('2018-01-01');
 	var minDate = moment('2018-01-01');
 	var maxDate = moment('2018-12-01');
+	stampWeekDay(startDate);
 	stampMonthDays(startDate);
 	printHolidays(startDate);
 
@@ -38,6 +42,10 @@ $(document).ready(function() {
 			}
 		}
 	});
+
+
+
+
 
 	function printHolidays(mth) {
 		$.ajax({
@@ -81,6 +89,15 @@ $(document).ready(function() {
 			var finalTemplate = dayTemplate(dayToPush);
 			$('#calendar').append(finalTemplate);
 			standardDay.add(1,'day');
+		}
+	}
+
+	function stampWeekDay(monthToStamp) {
+		for (var i = 1; i <= 7; i++) {
+			var standardDay = monthToStamp.clone();
+			var weekDayToPush = {dayofWeek:standardDay.isoWeekday(i).format('dddd')};
+			var finalTemplate = weekDayTemplate(weekDayToPush);
+			$('#weekday').append(finalTemplate);
 		}
 	}
 })
