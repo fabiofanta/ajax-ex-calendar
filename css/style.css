@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
 .clearfix::after {
 	content: "";
 	display: table;
@@ -26,14 +32,20 @@
 }
 
 .main-calendar {
+	max-width: 100vw;
 	height: 100vh;
-	width: 100vw;
+}
+
+#calendar {
+	width: calc(100% - 50px);
+	height: calc(100% - 50px);
+	margin: 50px auto;
 }
 
 #calendar li {
 	float: left;
-	width: calc(100vw / 8);
-	height: 100px;
+	width: calc(100% / 7);
+	height: calc(100% / 7);
 	border: 1px solid black;
 	list-style: none;
 }

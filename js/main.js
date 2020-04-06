@@ -27,7 +27,6 @@ $(document).ready(function() {
 				$('.next-month').prop('disabled',true);
 			}
 		}
-		console.log(startDate);
 	});
 
 	$('.previous-month').click(function () {
@@ -42,7 +41,6 @@ $(document).ready(function() {
 				$('.previous-month').prop('disabled',true);
 			}
 		}
-		console.log(startDate);
 	});
 
 	function printHolidays(mth) {
